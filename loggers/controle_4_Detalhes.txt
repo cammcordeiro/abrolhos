@@ -1,0 +1,133 @@
+﻿Detalhes
+Série: Temp., °C
+	Dispositivos
+		Informações do Dispositivo
+			• Produto: HOBO UA-002-08 Pendant Temp/Light
+			• Número de Série: 20055112
+			• Número de Versão: 1.09
+			• Fabricante: Onset Computer Corp.
+			• Memória do Dispositivo: 8192
+			• Criação do Cabeçalho: 03/07/17 06h36min54s GMT-02:00
+	Informações de Implementação
+		• Nome Completo da Série: Temperatura, °C
+		• Descrição do Lançamento: controle 4
+		• Número de Implementação: 12
+		• Hora de Lançamento: 11/18/22 09h35min10s GMT-02:00
+		• Intervalo de Registo: 00 h 01 min 00 s
+		• Lançar Desfasamento GMT: -2 h 0 min
+		• Bateria no Lançamento: 3,14 V
+		• Programa Iniciando: HOBOware -3.7.25_0811_1019_Windows
+	Estatísticas da Série
+		• Amostras: 475
+		• Máx.: 37,824
+		• Mín.: 24,158
+		• Méd.: 27,260
+		• Desv. Pad. (σ): 2,324
+		• Hora da Primeira Amostra: 11/18/22 10h0min0s GMT-02:00
+		• Hora da Última Amostra: 11/18/22 05h54min0s GMT-02:00
+Série: Intensidade, Lux
+	Dispositivos
+		Informações do Dispositivo
+			• Produto: HOBO UA-002-08 Pendant Temp/Light
+			• Número de Série: 20055112
+			• Número de Versão: 1.09
+			• Fabricante: Onset Computer Corp.
+			• Memória do Dispositivo: 8192
+			• Criação do Cabeçalho: 03/07/17 06h36min54s GMT-02:00
+	Informações de Implementação
+		• Nome Completo da Série: Intensidade da Luz, Lux
+		• Descrição do Lançamento: controle 4
+		• Número de Implementação: 12
+		• Hora de Lançamento: 11/18/22 09h35min10s GMT-02:00
+		• Intervalo de Registo: 00 h 01 min 00 s
+		• Lançar Desfasamento GMT: -2 h 0 min
+		• Bateria no Lançamento: 3,14 V
+		• Programa Iniciando: HOBOware -3.7.25_0811_1019_Windows
+	Estatísticas da Série
+		• Amostras: 475
+		• Máx.: 176.356,7
+		• Mín.: 161,5
+		• Méd.: 18.898,5
+		• Desv. Pad. (σ): 27.566,2
+		• Hora da Primeira Amostra: 11/18/22 10h0min0s GMT-02:00
+		• Hora da Última Amostra: 11/18/22 05h54min0s GMT-02:00
+Tipo de Evento: Acoplador Ligado
+	Dispositivos
+		Informações do Dispositivo
+			• Produto: HOBO UA-002-08 Pendant Temp/Light
+			• Número de Série: 20055112
+			• Número de Versão: 1.09
+			• Fabricante: Onset Computer Corp.
+			• Memória do Dispositivo: 8192
+			• Criação do Cabeçalho: 03/07/17 06h36min54s GMT-02:00
+	Informações de Implementação
+		• Nome Completo da Série: Acoplador Ligado
+		• Descrição do Lançamento: controle 4
+		• Número de Implementação: 12
+		• Hora de Lançamento: 11/18/22 09h35min10s GMT-02:00
+		• Lançar Desfasamento GMT: -2 h 0 min
+		• Bateria no Lançamento: 3,14 V
+	Estatísticas da Série
+		• Amostras: 1
+		• Hora da Primeira Amostra: 11/18/22 05h54min40s GMT-02:00
+		• Hora da Última Amostra: 11/18/22 05h54min40s GMT-02:00
+Tipo de Evento: Anfitrião Ligado
+	Dispositivos
+		Informações do Dispositivo
+			• Produto: HOBO UA-002-08 Pendant Temp/Light
+			• Número de Série: 20055112
+			• Número de Versão: 1.09
+			• Fabricante: Onset Computer Corp.
+			• Memória do Dispositivo: 8192
+			• Criação do Cabeçalho: 03/07/17 06h36min54s GMT-02:00
+	Informações de Implementação
+		• Nome Completo da Série: Anfitrião Ligado
+		• Descrição do Lançamento: controle 4
+		• Número de Implementação: 12
+		• Hora de Lançamento: 11/18/22 09h35min10s GMT-02:00
+		• Lançar Desfasamento GMT: -2 h 0 min
+		• Bateria no Lançamento: 3,14 V
+	Estatísticas da Série
+		• Amostras: 1
+		• Hora da Primeira Amostra: 11/18/22 05h54min46s GMT-02:00
+		• Hora da Última Amostra: 11/18/22 05h54min46s GMT-02:00
+Tipo de Evento: Parado
+	Dispositivos
+		Informações do Dispositivo
+			• Produto: HOBO UA-002-08 Pendant Temp/Light
+			• Número de Série: 20055112
+			• Número de Versão: 1.09
+			• Fabricante: Onset Computer Corp.
+			• Memória do Dispositivo: 8192
+			• Criação do Cabeçalho: 03/07/17 06h36min54s GMT-02:00
+	Informações de Implementação
+		• Nome Completo da Série: Parado
+		• Descrição do Lançamento: controle 4
+		• Número de Implementação: 12
+		• Hora de Lançamento: 11/18/22 09h35min10s GMT-02:00
+		• Lançar Desfasamento GMT: -2 h 0 min
+		• Bateria no Lançamento: 3,14 V
+	Estatísticas da Série
+		• Amostras: 1
+		• Hora da Primeira Amostra: 11/18/22 05h54min57s GMT-02:00
+		• Hora da Última Amostra: 11/18/22 05h54min57s GMT-02:00
+Tipo de Evento: Fim Do Ficheiro
+	Dispositivos
+		Informações do Dispositivo
+			• Produto: HOBO UA-002-08 Pendant Temp/Light
+			• Número de Série: 20055112
+			• Número de Versão: 1.09
+			• Fabricante: Onset Computer Corp.
+			• Memória do Dispositivo: 8192
+			• Criação do Cabeçalho: 03/07/17 06h36min54s GMT-02:00
+	Informações de Implementação
+		• Nome Completo da Série: Fim Do Ficheiro
+		• Descrição do Lançamento: controle 4
+		• Número de Implementação: 12
+		• Hora de Lançamento: 11/18/22 09h35min10s GMT-02:00
+		• Lançar Desfasamento GMT: -2 h 0 min
+		• Bateria no Lançamento: 3,14 V
+	Estatísticas da Série
+		• Amostras: 1
+		• Hora da Primeira Amostra: 11/18/22 05h54min57s GMT-02:00
+		• Hora da Última Amostra: 11/18/22 05h54min57s GMT-02:00

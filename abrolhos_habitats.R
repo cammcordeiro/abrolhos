@@ -3,7 +3,7 @@ library(tidyverse)
 abrolhos_producao <- read.csv("abrolhos_producao.csv", dec=",")
 
 abrolhos_producao %>%
-  mutate(habitat = factor(habitat, levels = c("1", "2", "3")),
+  mutate(habitat = factor(habitat, levels = c("1", "2", "3", "controle_resp")),
          dif = ((o2_zero - o2_pd) - o2_resp)) %>% 
   pivot_longer(cols = c("o2_pd", "o2_resp"), values_to = "valor", names_to = "variavel") %>% 
   filter(variavel == "o2_pd") %>% 
@@ -12,6 +12,16 @@ abrolhos_producao %>%
     theme_classic() +
     theme(legend.position = "") +
     facet_grid(~ variavel)
+
+
+abrolhos_producao %>%
+  mutate(habitat = factor(habitat, levels = c("1", "2", "3", "controle_resp")),
+         dif = ((o2_zero - o2_pd) - o2_resp)) %>% 
+  pivot_longer(cols = c("o2_pd", "o2_resp"), values_to = "valor", names_to = "variavel") %>% 
+  filter(variavel == "o2_pd") %>% 
+  lme4::lmer(dif ~ habitat + (1|date) + (1|site), . ) %>%  
+  emmeans::emmeans(., list(pairwise ~ habitat), adjust = "tukey")
+
 
 # temperatura
 temperatura <- bind_rows(

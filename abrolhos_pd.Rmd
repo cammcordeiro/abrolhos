@@ -1,0 +1,110 @@
+---
+title: "Abrolhos"
+output: html_document
+date: "2023-07-14"
+---
+
+```{r files}
+source("abrolhos_habitats.R")
+```
+
+## Metodologia
+
+Para cálculo da produção primária dos componentes da matriz de algas epilíticas foi aplicado um protoloco de incubação in situ adaptado de Strickland & Parson (1972).
+Este protocolo consistiu em remover porções do recife (~5x3cm) utilizando-se marretas e talhadeiras a fim de remover a cobertura de algas epilíticas sem danos aos seus componentes. As 10 amostras coletadas em cada habitat investigado (1, 2 e 3) foram imediatamente acondicionadas em frascos de polietileno (150 ml) transparentes com tampa de rosca para garantir plena vedação. Os frascos foram presos a um estrado preto lastreado e instalados nos mesmos habitats para garantir as mesmas condições de luminosidade e pressão dos habitats originários. Juntamente com as amostras foram presos 2 frascos contendo apenas água coletada nos habitats para funcinar como controle da produção de organismos planctônicos. Em cada habitat também foram coletadas amostras de água para medição dos níveis de oxigênio iniciais. Após 2 horas, os ensaios foram recolhidos e levados a bordo para medição dos níveis de oxigênio dissolvido na água. Após as medições, os ensaios foram cobertos com papel alumínio e levados para os habitats originários e incubados por mais 2h.
+Os ensaios foram replicados em dois sítios e repetidos em dois dias não consecutivos. Os dados de temperatuda da água e luminosidade local foram amostrados concomitantemente por meio de registradores acoplados aos estrados, sendo também instalado um sensor destes no barco para calibração da luminosidade incidente externa.
+A produção primária estimada foi calculada com base na diferença entre os níveis de oxigênio iniciais de cada habitat e dos níveis finais medidos nas amostras. Os valores foram normalizados pelo volume dos frascos. Ao final dos ensaios, os fragmentos utilizados nos ensaios foram acondicionados em papel alumínio e estocados em sacos plásticos individualidos para posterior medição da biomassa (gC.g-1) de cada amostra a ser obtida por meio de pesagem após secagem e incineração.
+
+## Produção
+
+Observamos que os ensaios indicaram diferenças nos níveis de oxigênio dissolvido entre os habitats (figura 1, ANOVA: Fvalue = 19.7, p < 0.001), tendo um maior maior consumo de oxigênio no habitat 1 e controle. Os valores dos habitats 2 e 3 foram similares com menor consumo de oxigênio por volume e diferentes dos demais tratamentos (tabela 1). Essa análise preliminar indica que houve maior consumo do que produção pelos componentes da matriz de algas epilíticas. No entanto, sem a normalização pela biomassa de produtores, não é possível afirmar qual ambientes apresenta maior heterotrofia.
+
+```{r pressure, echo=FALSE}
+resp <- abrolhos_producao %>%
+  mutate(habitat = recode (habitat, "controle_resp" = "controle") %>%
+           factor(., levels = c("1", "2", "3", "controle")),
+         dif = ((o2_pd - o2_zero) - o2_resp)) %>% 
+  pivot_longer(cols = c("o2_pd", "o2_resp"), values_to = "valor", names_to = "variavel") %>% 
+  filter(variavel == "o2_pd") %>%
+  mutate(variavel = recode(variavel, "o2_pd" = "produção líquida")) 
+
+resp %>% 
+  ggplot(aes(x = habitat, y = dif, color = habitat)) +
+    geom_boxplot() +
+    geom_jitter(width = 0.2, alpha = 0.5) +
+    theme_classic() +
+    theme(legend.position = "") +
+    labs(y = "oxigênio dissolvido (mg/ml)")
+  
+```
+
+
+```{r}
+mod <- resp %>% 
+  lme4::lmer(dif ~ habitat + (1|date) + (1|site), . ) 
+
+mod %>%  
+  anova()
+
+posthoc <- emmeans::emmeans(mod, list(pairwise ~ habitat), adjust = "tukey")
+
+knitr::kable(posthoc$`pairwise differences of habitat`)
+
+```
+
+## temperatura e luminosidade
+
+Em relação aos fatores abióticos, foram observadas diferenças nos valores de temperatura (figura 2, ANOVA: F-value = 1339.8, p <<0.001) e luminosidade (figura 3, ANOVA: F-value = 1012.3, p <<0.001), mas estes dados ainda serão pareados para análises posteriores e plotagem das curvas de produção.
+
+```{r}
+
+# temp do ar
+# temperatura %>% 
+#   filter(trat == "ar") %>% 
+#   ggplot(aes(x = data, y = temp, group = data)) +
+#     geom_boxplot() +
+#     geom_jitter(alpha = 0.5) +
+#     theme_classic() +
+#     labs(y = "temperatura do ar (C)", x = "")
+
+# temp da agua, mas falta separar por habitat
+temperatura %>% 
+  filter(trat != "ar", data %in% c("2022-11-19", "2022-11-21", "2022-11-22")) %>% 
+  ggplot(aes(x = data, y = temp, group = data)) +
+    geom_boxplot() +
+    geom_jitter(width = 0.2, alpha = 0.5) +
+    theme_classic() +
+    theme(legend.position = "") +
+    labs(y = "temperatura (C)", x = "")
+
+# luminosidade na agua, mas falta separar por habitat
+temperatura %>% 
+  filter(trat != "ar", data %in% c("2022-11-19", "2022-11-21", "2022-11-22")) %>% 
+  ggplot(aes(x = data, y = log(lux), group = data)) +
+    geom_boxplot() +
+    geom_jitter(width = 0.2, alpha = 0.5) +
+    theme_classic() +
+    theme(legend.position = "") +
+    labs(y = "luminosidade (lux)", x = "")
+
+```
+
+```{r}
+temperatura %>% 
+  filter(trat != "ar", data %in% c("2022-11-19", "2022-11-21", "2022-11-22")) %>% 
+  lm(temp ~ data, . ) %>% 
+  anova()
+
+
+temperatura %>% 
+  filter(trat != "ar", data %in% c("2022-11-19", "2022-11-21", "2022-11-22")) %>% 
+  lm(log(1+lux) ~ data, . ) %>% 
+  anova()
+
+```
+
+
+## Referências
+
+Strickland, J.D.H. and Parsons, T.R. (1972) A Practical Handbook of Seawater Analysis. 2nd edition. Ottawa, Canada, Fisheries Research Board of Canada, 310pp. (Bulletin Fisheries Research Board of Canada, Nr. 167 (2nd ed)). DOI: http://dx.doi.org/10.25607/OBP-1791
+
